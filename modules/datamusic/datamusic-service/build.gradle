@@ -1,0 +1,12 @@
+dependencies {
+	api project(":modules:datamusic:datamusic-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.dxp.api"
+}
+
+buildService {
+	apiDir = "../datamusic-api/src/main/java"
+	testDir = "../datamusic-test/src/testIntegration/java"
+}
+
+group = "com.liferay.docs.datamusic"

@@ -1,0 +1,10 @@
+Bundle-Name: datamusic-api
+Bundle-SymbolicName: com.liferay.docs.datamusic.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.liferay.docs.datamusic.exception,\
+	com.liferay.docs.datamusic.model,\
+	com.liferay.docs.datamusic.service,\
+	com.liferay.docs.datamusic.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../datamusic-service/service.xml
