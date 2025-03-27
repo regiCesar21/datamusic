@@ -1,50 +1,119 @@
 <?xml version="1.0"?>
 <!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.4.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_4_0.dtd">
 
-<service-builder dependency-injector="ds" package-path="com.datamusic.app">
-	<namespace>FOO</namespace>
-	<!--<entity data-source="sampleDataSource" local-service="true" name="Foo" remote-service="false" session-factory="sampleSessionFactory" table="foo" tx-manager="sampleTransactionManager uuid="true"">-->
-	<entity local-service="true" name="Foo" remote-service="true" uuid="true">
+<service-builder dependency-injector="ds" mvcc-enabled="true" package-path="com.datamusic.app">
+
+	<author>Regisson Aguiar</author>
+
+	<namespace>datamusic</namespace>
+
+	<!-- Entidade UserAccount -->
+	<entity local-service="true" name="UserAccount" remote-service="true" uuid="true">
 
 		<!-- PK fields -->
-
-		<column name="fooId" primary="true" type="long" />
-
-		<!-- Group instance -->
-
-		<column name="groupId" type="long" />
+		<column name="userAccountId" primary="true" type="long" />
 
 		<!-- Audit fields -->
-
 		<column name="companyId" type="long" />
-		<column name="userId" type="long" />
-		<column name="userName" type="String" />
 		<column name="createDate" type="Date" />
 		<column name="modifiedDate" type="Date" />
 
-		<!-- Other fields -->
-
-		<column name="field1" type="String" />
-		<column name="field2" type="boolean" />
-		<column name="field3" type="int" />
-		<column name="field4" type="Date" />
-		<column name="field5" type="String" />
-
-		<!-- Order -->
+		<!-- User info -->
+		<column name="userNameAccount" type="String" />
 
 		<order by="asc">
-			<order-column name="field1" />
+			<order-column name="userNameAccount" />
+		</order>
+
+		<!-- Finder methods -->
+		<finder name="UserNameAccount" return-type="Collection">
+			<finder-column name="userNameAccount" />
+		</finder>
+
+		<finder name="UserAccountId" return-type="Collection">
+			<finder-column name="userAccountId" />
+		</finder>
+
+		<finder name="U_U" return-type="Collection">
+			<finder-column name="userAccountId" />
+			<finder-column name="userNameAccount" />
+		</finder>
+
+	</entity>
+
+	<!-- Entity Media -->
+	<entity local-service="true" name="Media" remote-service="false" uuid="true">
+
+		<!-- PK fields -->
+		<column name="mediaId" primary="true" type="long" />
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Media details -->
+		<column name="mediaName" type="String" />
+		<column name="artist" type="String" />
+		<column name="description" type="String" />
+		<column name="genre" type="String" />
+
+		<order by="asc">
+			<order-column name="mediaName" />
+		</order>
+
+		<!-- Finder methods -->
+		<finder name="MediaName" return-type="Collection">
+			<finder-column name="mediaName" />
+		</finder>
+
+		<finder name="Artist" return-type="Collection">
+			<finder-column name="artist" />
+		</finder>
+
+		<finder name="Genre" return-type="Collection">
+			<finder-column name="genre" />
+		</finder>
+
+	</entity>
+
+	<!-- Entity CollectionItem -->
+	<entity local-service="true" name="CollectionItem" remote-service="true" uuid="true">
+
+		<!-- PK fields -->
+		<column name="collectionItemId" primary="true" type="long" />
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Relation fields -->
+		<column name="userAccountId" type="long" />
+		<column name="mediaId" type="long" />
+
+		<!-- Album details -->
+		<column name="review" type="String" />
+		<column name="rating" type="int" />
+
+		<order by="asc">
+			<order-column name="rating" />
 		</order>
 
 		<!-- Finder methods -->
 
-		<finder name="Field2" return-type="Collection">
-			<finder-column name="field2" />
+		<finder name="U_R" return-type="Collection">
+			<finder-column name="userAccountId" />
+			<finder-column name="rating" />
 		</finder>
 
-		<!-- References -->
-
-		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
-		<reference entity="AssetTag" package-path="com.liferay.portlet.asset" />
 	</entity>
+
+	<exceptions>
+		<exception>DuplicateMedia</exception>
+		<exception>MediaNotFound</exception>
+		<exception>UserNotFound</exception>
+		<exception>DuplicateUser</exception>
+	</exceptions>
+
 </service-builder>
