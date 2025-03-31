@@ -1,0 +1,5 @@
+Bundle-Name: datamusic-rest-test
+Bundle-SymbolicName: datamusic.rest.test
+Bundle-Version: 1.0.0
+-includeresource: datamusic.rest.client.jar=../datamusic-rest-client/build/libs/datamusic.rest.client-1.0.0.jar;lib:=true
+-provider-policy: ${replacestring;${range;[==,==]};.*,(.*)];$1}

@@ -1,0 +1,9 @@
+apiDir: "../datamusic-rest-api/src/main/java"
+apiPackagePath: "datamusic.rest"
+application:
+    baseURI: "/datamusic-rest"
+    className: "DatamusicRestApplication"
+    name: "DatamusicRest"
+author: "me"
+clientDir: "../datamusic-rest-client/src/main/java"
+testDir: "../datamusic-rest-test/src/testIntegration/java"

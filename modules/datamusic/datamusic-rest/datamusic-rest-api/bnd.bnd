@@ -1,0 +1,6 @@
+Bundle-Name: datamusic-rest-api
+Bundle-SymbolicName: datamusic.rest.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	datamusic.rest.dto.v1_0,\
+	datamusic.rest.resource.v1_0

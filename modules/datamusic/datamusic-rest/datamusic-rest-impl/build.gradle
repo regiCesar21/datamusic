@@ -1,0 +1,7 @@
+dependencies {
+	api project(":modules:datamusic:datamusic-rest:datamusic-rest-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.dxp.api"
+}
+
+group = "datamusic.rest"

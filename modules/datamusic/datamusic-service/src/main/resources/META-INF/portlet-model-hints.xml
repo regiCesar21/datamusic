@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.datamusic.app.model.CollectionItem">
+		<field name="mvccVersion" type="long" />
+		<field name="uuid" type="String" />
+		<field name="collectionItemId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="userAccountId" type="long" />
+		<field name="mediaId" type="long" />
+		<field name="review" type="String" />
+		<field name="rating" type="int" />
+	</model>
+	<model name="com.datamusic.app.model.Media">
+		<field name="mvccVersion" type="long" />
+		<field name="uuid" type="String" />
+		<field name="mediaId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="mediaName" type="String" />
+		<field name="artist" type="String" />
+		<field name="description" type="String" />
+		<field name="genre" type="String" />
+	</model>
+	<model name="com.datamusic.app.model.UserAccount">
+		<field name="mvccVersion" type="long" />
+		<field name="uuid" type="String" />
+		<field name="userAccountId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="userNameAccount" type="String" />
+		<field name="userFirstName" type="String" />
+		<field name="userLastName" type="String" />
+	</model>
+</model-hints>

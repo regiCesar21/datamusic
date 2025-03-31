@@ -7,7 +7,7 @@
 
 	<namespace>datamusic</namespace>
 
-	<!-- Entidade UserAccount -->
+	<!-- Entity UserAccount -->
 	<entity local-service="true" name="UserAccount" remote-service="true" uuid="true">
 
 		<!-- PK fields -->
@@ -20,6 +20,8 @@
 
 		<!-- User info -->
 		<column name="userNameAccount" type="String" />
+		<column name="userFirstName" type="String" />
+		<column name="userLastName" type="String" />
 
 		<order by="asc">
 			<order-column name="userNameAccount" />
@@ -34,15 +36,18 @@
 			<finder-column name="userAccountId" />
 		</finder>
 
-		<finder name="U_U" return-type="Collection">
-			<finder-column name="userAccountId" />
-			<finder-column name="userNameAccount" />
+		<finder name="UserFirstName" return-type="Collection">
+			<finder-column name="userFirstName" />
+		</finder>
+
+		<finder name="UserLastName" return-type="Collection">
+			<finder-column name="userLastName" />
 		</finder>
 
 	</entity>
 
 	<!-- Entity Media -->
-	<entity local-service="true" name="Media" remote-service="false" uuid="true">
+	<entity local-service="true" name="Media" remote-service="true" uuid="true">
 
 		<!-- PK fields -->
 		<column name="mediaId" primary="true" type="long" />
@@ -65,6 +70,10 @@
 		<!-- Finder methods -->
 		<finder name="MediaName" return-type="Collection">
 			<finder-column name="mediaName" />
+		</finder>
+
+		<finder name="MediaId" return-type="Collection">
+			<finder-column name="mediaId" />
 		</finder>
 
 		<finder name="Artist" return-type="Collection">
