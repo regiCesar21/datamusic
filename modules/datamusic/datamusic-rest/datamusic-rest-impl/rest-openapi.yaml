@@ -6,3 +6,252 @@ info:
     title: "Datamusic"
     version: v1.0
 openapi: 3.0.1
+components:
+    schemas:
+        UserAccount:
+            description:
+                https://schema.org/UserAccount
+            properties:
+                userAccountId:
+                    format: int64
+                    type: integer
+                userNameAccount:
+                    type: string
+                userFirstName:
+                    type: string
+                userLastName:
+                    type: string
+            type: object
+        Media:
+            description:
+                https://schema.org/Media
+            properties:
+                mediaId:
+                    format: int64
+                    type: integer
+                mediaName:
+                    type: string
+                artist:
+                    type: string
+                description:
+                    type: string
+                genre:
+                    type: string
+        CollectionItem:
+            description:
+                https://schema.org/CollectionItem
+            properties:
+                collectionItemId:
+                    format: int64
+                    type: integer
+                userAccountId:
+                    format: int64
+                    type: integer
+                mediaId:
+                    format: int64
+                    type: integer
+                review:
+                    type: string
+                rating:
+                    format: int64
+                    type: integer
+paths:
+    "/userAccount":
+        get:
+            operationId: getUserAccount
+            responses:
+                200:
+                    description: "Get all users registered"
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/UserAccount"
+                                type: array
+                        application/xml:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/UserAccount"
+                                type: array
+            tags: [ "UserAccount" ]
+        post:
+            operationId: postUserAccount
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/UserAccount"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/UserAccount"
+            responses:
+                201:
+                    description: "Post a new user"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/UserAccount"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/UserAccount"
+            tags: [ "UserAccount" ]
+    "/userAccount/delete-UserAccount/{userAccountId}":
+        delete:
+            operationId: deleteUserAccountById
+            parameters:
+                - in: path
+                  name: userAccountId
+                  required: true
+                  schema:
+                      type: integer
+            responses:
+                200:
+                    description: "User was deleted with success"
+            tags: [ "UserAccount" ]
+    "/userAccount/userAccount-by-id/{userAccountId}":
+        get:
+            operationId: getUserAccountIdById
+            parameters:
+                - in: path
+                  name: userAccountId
+                  required: true
+                  schema:
+                      type: integer
+            responses:
+                200:
+                    description: "UserAccount Found!"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/UserAccount"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/UserAccount"
+            tags: [ "UserAccount" ]
+    "/media":
+        get:
+            operationId: getMedia
+            responses:
+                200:
+                    description: "Get all available medias"
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/Media"
+                                type: array
+                        application/xml:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/Media"
+                                type: array
+            tags: [ "Media" ]
+        post:
+            operationId: postMedia
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Media"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/Media"
+            responses:
+                201:
+                    description: "Post a new Media"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Media"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/Media"
+            tags: [ "Media" ]
+    "/media/delete-media-by-id/{mediaId}":
+        delete:
+            operationId: deleteMediaById
+            parameters:
+                - in: path
+                  name: mediaId
+                  required: true
+                  schema:
+                      type: integer
+            responses:
+                200:
+                    description: "Delete media by id"
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/Media"
+                                type: object
+                        application/xml:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/Media"
+                                type: object
+            tags: [ "Media" ]
+    "/media/get-media-by-id/{mediaId}":
+        get:
+            operationId: getMediaById
+            parameters:
+                - in: path
+                  name: mediaId
+                  required: true
+                  schema:
+                      type: integer
+            responses:
+                200:
+                    description: "Getting media by id"
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/Media"
+                                type: object
+                        application/xml:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/Media"
+                                type: object
+            tags: [ "Media" ]
+    "/collectionItem":
+        get:
+            operationId: getCollectionItem
+            responses:
+                200:
+                    description: "Get all available Collection Items"
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/CollectionItem"
+                                type: array
+                        application/xml:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/CollectionItem"
+                                type: array
+            tags: [ "CollectionItem" ]
+        post:
+            operationId: postCollectionItem
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CollectionItem"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/CollectionItem"
+            responses:
+                201:
+                    description: "Post a new Collection Item"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/CollectionItem"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/CollectionItem"
+            tags: [ "CollectionItem" ]
+
