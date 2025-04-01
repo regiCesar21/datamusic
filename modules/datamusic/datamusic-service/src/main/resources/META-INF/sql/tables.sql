@@ -8,7 +8,7 @@ create table datamusic_CollectionItem (
 	userAccountId LONG,
 	mediaId LONG,
 	review VARCHAR(75) null,
-	rating INTEGER
+	rating LONG
 );
 
 create table datamusic_Media (

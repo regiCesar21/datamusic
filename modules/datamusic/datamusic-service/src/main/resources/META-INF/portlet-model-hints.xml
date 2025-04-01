@@ -11,7 +11,7 @@
 		<field name="userAccountId" type="long" />
 		<field name="mediaId" type="long" />
 		<field name="review" type="String" />
-		<field name="rating" type="int" />
+		<field name="rating" type="Long" />
 	</model>
 	<model name="com.datamusic.app.model.Media">
 		<field name="mvccVersion" type="long" />

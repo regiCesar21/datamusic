@@ -151,7 +151,7 @@ public class Query {
 				_userAccountResourceComponentServiceObjects,
 				Query.this::_populateResourceContext,
 				userAccountResource -> userAccountResource.getUserAccountIdById(
-					_collectionItem.getUserAccountId()));
+                        Math.toIntExact(_collectionItem.getUserAccountId())));
 		}
 
 		private CollectionItem _collectionItem;

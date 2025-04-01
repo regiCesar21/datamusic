@@ -104,7 +104,7 @@ public class CollectionItemWrapper
 			setReview(review);
 		}
 
-		Integer rating = (Integer)attributes.get("rating");
+		Long rating = (Long)attributes.get("rating");
 
 		if (rating != null) {
 			setRating(rating);
@@ -192,7 +192,7 @@ public class CollectionItemWrapper
 	 * @return the rating of this collection item
 	 */
 	@Override
-	public int getRating() {
+	public Long getRating() {
 		return model.getRating();
 	}
 
@@ -307,7 +307,7 @@ public class CollectionItemWrapper
 	 * @param rating the rating of this collection item
 	 */
 	@Override
-	public void setRating(int rating) {
+	public void setRating(Long rating) {
 		model.setRating(rating);
 	}
 

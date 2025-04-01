@@ -1215,7 +1215,7 @@ public class CollectionItemPersistenceImpl
 	 * @return the matching collection items
 	 */
 	@Override
-	public List<CollectionItem> findByU_R(long userAccountId, int rating) {
+	public List<CollectionItem> findByU_R(long userAccountId, Long rating) {
 		return findByU_R(
 			userAccountId, rating, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
 	}
@@ -1235,7 +1235,7 @@ public class CollectionItemPersistenceImpl
 	 */
 	@Override
 	public List<CollectionItem> findByU_R(
-		long userAccountId, int rating, int start, int end) {
+		long userAccountId, Long rating, int start, int end) {
 
 		return findByU_R(userAccountId, rating, start, end, null);
 	}
@@ -1256,7 +1256,7 @@ public class CollectionItemPersistenceImpl
 	 */
 	@Override
 	public List<CollectionItem> findByU_R(
-		long userAccountId, int rating, int start, int end,
+		long userAccountId, Long rating, int start, int end,
 		OrderByComparator<CollectionItem> orderByComparator) {
 
 		return findByU_R(
@@ -1280,7 +1280,7 @@ public class CollectionItemPersistenceImpl
 	 */
 	@Override
 	public List<CollectionItem> findByU_R(
-		long userAccountId, int rating, int start, int end,
+		long userAccountId, Long rating, int start, int end,
 		OrderByComparator<CollectionItem> orderByComparator,
 		boolean useFinderCache) {
 
@@ -1311,7 +1311,7 @@ public class CollectionItemPersistenceImpl
 			if ((list != null) && !list.isEmpty()) {
 				for (CollectionItem collectionItem : list) {
 					if ((userAccountId != collectionItem.getUserAccountId()) ||
-						(rating != collectionItem.getRating())) {
+						!Objects.equals(rating, collectionItem.getRating())) {
 
 						list = null;
 
@@ -1359,7 +1359,7 @@ public class CollectionItemPersistenceImpl
 
 				queryPos.add(userAccountId);
 
-				queryPos.add(rating);
+				queryPos.add(rating.longValue());
 
 				list = (List<CollectionItem>)QueryUtil.list(
 					query, getDialect(), start, end);
@@ -1392,7 +1392,7 @@ public class CollectionItemPersistenceImpl
 	 */
 	@Override
 	public CollectionItem findByU_R_First(
-			long userAccountId, int rating,
+			long userAccountId, Long rating,
 			OrderByComparator<CollectionItem> orderByComparator)
 		throws NoSuchCollectionItemException {
 
@@ -1428,7 +1428,7 @@ public class CollectionItemPersistenceImpl
 	 */
 	@Override
 	public CollectionItem fetchByU_R_First(
-		long userAccountId, int rating,
+		long userAccountId, Long rating,
 		OrderByComparator<CollectionItem> orderByComparator) {
 
 		List<CollectionItem> list = findByU_R(
@@ -1452,7 +1452,7 @@ public class CollectionItemPersistenceImpl
 	 */
 	@Override
 	public CollectionItem findByU_R_Last(
-			long userAccountId, int rating,
+			long userAccountId, Long rating,
 			OrderByComparator<CollectionItem> orderByComparator)
 		throws NoSuchCollectionItemException {
 
@@ -1488,7 +1488,7 @@ public class CollectionItemPersistenceImpl
 	 */
 	@Override
 	public CollectionItem fetchByU_R_Last(
-		long userAccountId, int rating,
+		long userAccountId, Long rating,
 		OrderByComparator<CollectionItem> orderByComparator) {
 
 		int count = countByU_R(userAccountId, rating);
@@ -1519,7 +1519,7 @@ public class CollectionItemPersistenceImpl
 	 */
 	@Override
 	public CollectionItem[] findByU_R_PrevAndNext(
-			long collectionItemId, long userAccountId, int rating,
+			long collectionItemId, long userAccountId, Long rating,
 			OrderByComparator<CollectionItem> orderByComparator)
 		throws NoSuchCollectionItemException {
 
@@ -1554,7 +1554,7 @@ public class CollectionItemPersistenceImpl
 
 	protected CollectionItem getByU_R_PrevAndNext(
 		Session session, CollectionItem collectionItem, long userAccountId,
-		int rating, OrderByComparator<CollectionItem> orderByComparator,
+		Long rating, OrderByComparator<CollectionItem> orderByComparator,
 		boolean previous) {
 
 		StringBundler sb = null;
@@ -1645,7 +1645,7 @@ public class CollectionItemPersistenceImpl
 
 		queryPos.add(userAccountId);
 
-		queryPos.add(rating);
+		queryPos.add(rating.longValue());
 
 		if (orderByComparator != null) {
 			for (Object orderByConditionValue :
@@ -1673,7 +1673,7 @@ public class CollectionItemPersistenceImpl
 	 * @param rating the rating
 	 */
 	@Override
-	public void removeByU_R(long userAccountId, int rating) {
+	public void removeByU_R(long userAccountId, Long rating) {
 		for (CollectionItem collectionItem :
 				findByU_R(
 					userAccountId, rating, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
@@ -1691,7 +1691,7 @@ public class CollectionItemPersistenceImpl
 	 * @return the number of matching collection items
 	 */
 	@Override
-	public int countByU_R(long userAccountId, int rating) {
+	public int countByU_R(long userAccountId, Long rating) {
 		FinderPath finderPath = _finderPathCountByU_R;
 
 		Object[] finderArgs = new Object[] {userAccountId, rating};
@@ -1720,7 +1720,7 @@ public class CollectionItemPersistenceImpl
 
 				queryPos.add(userAccountId);
 
-				queryPos.add(rating);
+				queryPos.add(rating.longValue());
 
 				count = (Long)query.uniqueResult();
 
@@ -2347,7 +2347,7 @@ public class CollectionItemPersistenceImpl
 		_finderPathWithPaginationFindByU_R = new FinderPath(
 			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByU_R",
 			new String[] {
-				Long.class.getName(), Integer.class.getName(),
+				Long.class.getName(), Long.class.getName(),
 				Integer.class.getName(), Integer.class.getName(),
 				OrderByComparator.class.getName()
 			},
@@ -2355,12 +2355,12 @@ public class CollectionItemPersistenceImpl
 
 		_finderPathWithoutPaginationFindByU_R = new FinderPath(
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByU_R",
-			new String[] {Long.class.getName(), Integer.class.getName()},
+			new String[] {Long.class.getName(), Long.class.getName()},
 			new String[] {"userAccountId", "rating"}, true);
 
 		_finderPathCountByU_R = new FinderPath(
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByU_R",
-			new String[] {Long.class.getName(), Integer.class.getName()},
+			new String[] {Long.class.getName(), Long.class.getName()},
 			new String[] {"userAccountId", "rating"}, false);
 
 		CollectionItemUtil.setPersistence(this);

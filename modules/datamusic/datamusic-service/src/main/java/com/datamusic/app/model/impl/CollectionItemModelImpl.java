@@ -66,7 +66,7 @@ public class CollectionItemModelImpl
 		{"collectionItemId", Types.BIGINT}, {"companyId", Types.BIGINT},
 		{"createDate", Types.TIMESTAMP}, {"modifiedDate", Types.TIMESTAMP},
 		{"userAccountId", Types.BIGINT}, {"mediaId", Types.BIGINT},
-		{"review", Types.VARCHAR}, {"rating", Types.INTEGER}
+		{"review", Types.VARCHAR}, {"rating", Types.BIGINT}
 	};
 
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP =
@@ -82,11 +82,11 @@ public class CollectionItemModelImpl
 		TABLE_COLUMNS_MAP.put("userAccountId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("mediaId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("review", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("rating", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("rating", Types.BIGINT);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table datamusic_CollectionItem (mvccVersion LONG default 0 not null,uuid_ VARCHAR(75) null,collectionItemId LONG not null primary key,companyId LONG,createDate DATE null,modifiedDate DATE null,userAccountId LONG,mediaId LONG,review VARCHAR(75) null,rating INTEGER)";
+		"create table datamusic_CollectionItem (mvccVersion LONG default 0 not null,uuid_ VARCHAR(75) null,collectionItemId LONG not null primary key,companyId LONG,createDate DATE null,modifiedDate DATE null,userAccountId LONG,mediaId LONG,review VARCHAR(75) null,rating LONG)";
 
 	public static final String TABLE_SQL_DROP =
 		"drop table datamusic_CollectionItem";
@@ -304,7 +304,7 @@ public class CollectionItemModelImpl
 				(BiConsumer<CollectionItem, String>)CollectionItem::setReview);
 			attributeSetterBiConsumers.put(
 				"rating",
-				(BiConsumer<CollectionItem, Integer>)CollectionItem::setRating);
+				(BiConsumer<CollectionItem, Long>)CollectionItem::setRating);
 
 			_attributeSetterBiConsumers = Collections.unmodifiableMap(
 				(Map)attributeSetterBiConsumers);
@@ -494,12 +494,12 @@ public class CollectionItemModelImpl
 
 	@JSON
 	@Override
-	public int getRating() {
+	public Long getRating() {
 		return _rating;
 	}
 
 	@Override
-	public void setRating(int rating) {
+	public void setRating(Long rating) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
@@ -512,9 +512,8 @@ public class CollectionItemModelImpl
 	 *             #getColumnOriginalValue(String)}
 	 */
 	@Deprecated
-	public int getOriginalRating() {
-		return GetterUtil.getInteger(
-			this.<Integer>getColumnOriginalValue("rating"));
+	public Long getOriginalRating() {
+		return GetterUtil.getLong(this.<Long>getColumnOriginalValue("rating"));
 	}
 
 	@Override
@@ -618,7 +617,7 @@ public class CollectionItemModelImpl
 		collectionItemImpl.setReview(
 			this.<String>getColumnOriginalValue("review"));
 		collectionItemImpl.setRating(
-			this.<Integer>getColumnOriginalValue("rating"));
+			this.<Long>getColumnOriginalValue("rating"));
 
 		return collectionItemImpl;
 	}
@@ -747,7 +746,11 @@ public class CollectionItemModelImpl
 			collectionItemCacheModel.review = null;
 		}
 
-		collectionItemCacheModel.rating = getRating();
+		Long rating = getRating();
+
+		if (rating != null) {
+			collectionItemCacheModel.rating = rating;
+		}
 
 		return collectionItemCacheModel;
 	}
@@ -820,7 +823,7 @@ public class CollectionItemModelImpl
 	private long _userAccountId;
 	private long _mediaId;
 	private String _review;
-	private int _rating;
+	private Long _rating;
 
 	public <T> T getColumnValue(String columnName) {
 		columnName = _attributeNames.getOrDefault(columnName, columnName);

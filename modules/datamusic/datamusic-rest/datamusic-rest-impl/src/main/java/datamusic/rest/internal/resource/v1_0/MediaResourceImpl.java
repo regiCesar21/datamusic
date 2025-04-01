@@ -23,11 +23,13 @@ public class MediaResourceImpl extends BaseMediaResourceImpl {
 
 
 	public Media postMedia(Media media) throws Exception {
-		com.datamusic.app.model.Media media1 = _mediaLocalService.createMedia(0L, media.getMediaName(), media.getArtist(), media.getDescription(), media.getGenre());
+		com.datamusic.app.model.Media media1 = _mediaLocalService.createMedia(0, media.getMediaName(), media.getArtist(), media.getDescription(), media.getGenre());
 		return new Media(){
 			{
+				setMediaName(media1::getMediaName);
 				setArtist(media1::getArtist);
-
+				setDescription(media1::getDescription);
+				setGenre(media1::getGenre);
 			}
 		};
 	}

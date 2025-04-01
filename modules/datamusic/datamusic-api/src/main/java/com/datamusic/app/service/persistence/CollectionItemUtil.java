@@ -469,7 +469,7 @@ public class CollectionItemUtil {
 	 * @return the matching collection items
 	 */
 	public static List<CollectionItem> findByU_R(
-		long userAccountId, int rating) {
+		long userAccountId, Long rating) {
 
 		return getPersistence().findByU_R(userAccountId, rating);
 	}
@@ -488,7 +488,7 @@ public class CollectionItemUtil {
 	 * @return the range of matching collection items
 	 */
 	public static List<CollectionItem> findByU_R(
-		long userAccountId, int rating, int start, int end) {
+		long userAccountId, Long rating, int start, int end) {
 
 		return getPersistence().findByU_R(userAccountId, rating, start, end);
 	}
@@ -508,7 +508,7 @@ public class CollectionItemUtil {
 	 * @return the ordered range of matching collection items
 	 */
 	public static List<CollectionItem> findByU_R(
-		long userAccountId, int rating, int start, int end,
+		long userAccountId, Long rating, int start, int end,
 		OrderByComparator<CollectionItem> orderByComparator) {
 
 		return getPersistence().findByU_R(
@@ -531,7 +531,7 @@ public class CollectionItemUtil {
 	 * @return the ordered range of matching collection items
 	 */
 	public static List<CollectionItem> findByU_R(
-		long userAccountId, int rating, int start, int end,
+		long userAccountId, Long rating, int start, int end,
 		OrderByComparator<CollectionItem> orderByComparator,
 		boolean useFinderCache) {
 
@@ -550,7 +550,7 @@ public class CollectionItemUtil {
 	 * @throws NoSuchCollectionItemException if a matching collection item could not be found
 	 */
 	public static CollectionItem findByU_R_First(
-			long userAccountId, int rating,
+			long userAccountId, Long rating,
 			OrderByComparator<CollectionItem> orderByComparator)
 		throws com.datamusic.app.exception.NoSuchCollectionItemException {
 
@@ -567,7 +567,7 @@ public class CollectionItemUtil {
 	 * @return the first matching collection item, or <code>null</code> if a matching collection item could not be found
 	 */
 	public static CollectionItem fetchByU_R_First(
-		long userAccountId, int rating,
+		long userAccountId, Long rating,
 		OrderByComparator<CollectionItem> orderByComparator) {
 
 		return getPersistence().fetchByU_R_First(
@@ -584,7 +584,7 @@ public class CollectionItemUtil {
 	 * @throws NoSuchCollectionItemException if a matching collection item could not be found
 	 */
 	public static CollectionItem findByU_R_Last(
-			long userAccountId, int rating,
+			long userAccountId, Long rating,
 			OrderByComparator<CollectionItem> orderByComparator)
 		throws com.datamusic.app.exception.NoSuchCollectionItemException {
 
@@ -601,7 +601,7 @@ public class CollectionItemUtil {
 	 * @return the last matching collection item, or <code>null</code> if a matching collection item could not be found
 	 */
 	public static CollectionItem fetchByU_R_Last(
-		long userAccountId, int rating,
+		long userAccountId, Long rating,
 		OrderByComparator<CollectionItem> orderByComparator) {
 
 		return getPersistence().fetchByU_R_Last(
@@ -619,7 +619,7 @@ public class CollectionItemUtil {
 	 * @throws NoSuchCollectionItemException if a collection item with the primary key could not be found
 	 */
 	public static CollectionItem[] findByU_R_PrevAndNext(
-			long collectionItemId, long userAccountId, int rating,
+			long collectionItemId, long userAccountId, Long rating,
 			OrderByComparator<CollectionItem> orderByComparator)
 		throws com.datamusic.app.exception.NoSuchCollectionItemException {
 
@@ -633,7 +633,7 @@ public class CollectionItemUtil {
 	 * @param userAccountId the user account ID
 	 * @param rating the rating
 	 */
-	public static void removeByU_R(long userAccountId, int rating) {
+	public static void removeByU_R(long userAccountId, Long rating) {
 		getPersistence().removeByU_R(userAccountId, rating);
 	}
 
@@ -644,7 +644,7 @@ public class CollectionItemUtil {
 	 * @param rating the rating
 	 * @return the number of matching collection items
 	 */
-	public static int countByU_R(long userAccountId, int rating) {
+	public static int countByU_R(long userAccountId, Long rating) {
 		return getPersistence().countByU_R(userAccountId, rating);
 	}
 

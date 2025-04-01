@@ -17,7 +17,7 @@
 		<property access="com.liferay.portal.dao.orm.hibernate.MethodPropertyAccessor" name="userAccountId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property access="com.liferay.portal.dao.orm.hibernate.MethodPropertyAccessor" name="mediaId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property access="com.liferay.portal.dao.orm.hibernate.MethodPropertyAccessor" name="review" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property access="com.liferay.portal.dao.orm.hibernate.MethodPropertyAccessor" name="rating" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.MethodPropertyAccessor" name="rating" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 	</class>
 	<class dynamic-update="true" name="com.datamusic.app.model.impl.MediaImpl" table="datamusic_Media">
 		<id access="com.liferay.portal.dao.orm.hibernate.MethodPropertyAccessor" name="mediaId" type="long">

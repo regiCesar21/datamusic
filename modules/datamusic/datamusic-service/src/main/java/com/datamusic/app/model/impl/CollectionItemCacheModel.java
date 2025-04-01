@@ -159,7 +159,7 @@ public class CollectionItemCacheModel
 		mediaId = objectInput.readLong();
 		review = objectInput.readUTF();
 
-		rating = objectInput.readInt();
+		rating = objectInput.readLong();
 	}
 
 	@Override
@@ -190,7 +190,7 @@ public class CollectionItemCacheModel
 			objectOutput.writeUTF(review);
 		}
 
-		objectOutput.writeInt(rating);
+		objectOutput.writeLong(rating);
 	}
 
 	public long mvccVersion;
@@ -202,6 +202,6 @@ public class CollectionItemCacheModel
 	public long userAccountId;
 	public long mediaId;
 	public String review;
-	public int rating;
+	public long rating;
 
 }

@@ -193,14 +193,14 @@ public interface CollectionItemModel
 	 *
 	 * @return the rating of this collection item
 	 */
-	public int getRating();
+	public Long getRating();
 
 	/**
 	 * Sets the rating of this collection item.
 	 *
 	 * @param rating the rating of this collection item
 	 */
-	public void setRating(int rating);
+	public void setRating(Long rating);
 
 	@Override
 	public CollectionItem cloneWithOriginalValues();

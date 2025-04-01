@@ -103,7 +103,7 @@
 
 		<!-- Album details -->
 		<column name="review" type="String" />
-		<column name="rating" type="int" />
+		<column name="rating" type="Long" />
 
 		<order by="asc">
 			<order-column name="rating" />

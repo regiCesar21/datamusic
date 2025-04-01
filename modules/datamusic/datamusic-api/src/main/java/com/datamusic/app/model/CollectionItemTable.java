@@ -43,8 +43,8 @@ public class CollectionItemTable extends BaseTable<CollectionItemTable> {
 		"mediaId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
 	public final Column<CollectionItemTable, String> review = createColumn(
 		"review", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
-	public final Column<CollectionItemTable, Integer> rating = createColumn(
-		"rating", Integer.class, Types.INTEGER, Column.FLAG_DEFAULT);
+	public final Column<CollectionItemTable, Long> rating = createColumn(
+		"rating", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
 
 	private CollectionItemTable() {
 		super("datamusic_CollectionItem", CollectionItemTable::new);

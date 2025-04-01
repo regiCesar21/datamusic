@@ -339,7 +339,7 @@ public interface CollectionItemPersistence
 	 * @return the matching collection items
 	 */
 	public java.util.List<CollectionItem> findByU_R(
-		long userAccountId, int rating);
+		long userAccountId, Long rating);
 
 	/**
 	 * Returns a range of all the collection items where userAccountId = &#63; and rating = &#63;.
@@ -355,7 +355,7 @@ public interface CollectionItemPersistence
 	 * @return the range of matching collection items
 	 */
 	public java.util.List<CollectionItem> findByU_R(
-		long userAccountId, int rating, int start, int end);
+		long userAccountId, Long rating, int start, int end);
 
 	/**
 	 * Returns an ordered range of all the collection items where userAccountId = &#63; and rating = &#63;.
@@ -372,7 +372,7 @@ public interface CollectionItemPersistence
 	 * @return the ordered range of matching collection items
 	 */
 	public java.util.List<CollectionItem> findByU_R(
-		long userAccountId, int rating, int start, int end,
+		long userAccountId, Long rating, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<CollectionItem>
 			orderByComparator);
 
@@ -392,7 +392,7 @@ public interface CollectionItemPersistence
 	 * @return the ordered range of matching collection items
 	 */
 	public java.util.List<CollectionItem> findByU_R(
-		long userAccountId, int rating, int start, int end,
+		long userAccountId, Long rating, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<CollectionItem>
 			orderByComparator,
 		boolean useFinderCache);
@@ -407,7 +407,7 @@ public interface CollectionItemPersistence
 	 * @throws NoSuchCollectionItemException if a matching collection item could not be found
 	 */
 	public CollectionItem findByU_R_First(
-			long userAccountId, int rating,
+			long userAccountId, Long rating,
 			com.liferay.portal.kernel.util.OrderByComparator<CollectionItem>
 				orderByComparator)
 		throws NoSuchCollectionItemException;
@@ -421,7 +421,7 @@ public interface CollectionItemPersistence
 	 * @return the first matching collection item, or <code>null</code> if a matching collection item could not be found
 	 */
 	public CollectionItem fetchByU_R_First(
-		long userAccountId, int rating,
+		long userAccountId, Long rating,
 		com.liferay.portal.kernel.util.OrderByComparator<CollectionItem>
 			orderByComparator);
 
@@ -435,7 +435,7 @@ public interface CollectionItemPersistence
 	 * @throws NoSuchCollectionItemException if a matching collection item could not be found
 	 */
 	public CollectionItem findByU_R_Last(
-			long userAccountId, int rating,
+			long userAccountId, Long rating,
 			com.liferay.portal.kernel.util.OrderByComparator<CollectionItem>
 				orderByComparator)
 		throws NoSuchCollectionItemException;
@@ -449,7 +449,7 @@ public interface CollectionItemPersistence
 	 * @return the last matching collection item, or <code>null</code> if a matching collection item could not be found
 	 */
 	public CollectionItem fetchByU_R_Last(
-		long userAccountId, int rating,
+		long userAccountId, Long rating,
 		com.liferay.portal.kernel.util.OrderByComparator<CollectionItem>
 			orderByComparator);
 
@@ -464,7 +464,7 @@ public interface CollectionItemPersistence
 	 * @throws NoSuchCollectionItemException if a collection item with the primary key could not be found
 	 */
 	public CollectionItem[] findByU_R_PrevAndNext(
-			long collectionItemId, long userAccountId, int rating,
+			long collectionItemId, long userAccountId, Long rating,
 			com.liferay.portal.kernel.util.OrderByComparator<CollectionItem>
 				orderByComparator)
 		throws NoSuchCollectionItemException;
@@ -475,7 +475,7 @@ public interface CollectionItemPersistence
 	 * @param userAccountId the user account ID
 	 * @param rating the rating
 	 */
-	public void removeByU_R(long userAccountId, int rating);
+	public void removeByU_R(long userAccountId, Long rating);
 
 	/**
 	 * Returns the number of collection items where userAccountId = &#63; and rating = &#63;.
@@ -484,7 +484,7 @@ public interface CollectionItemPersistence
 	 * @param rating the rating
 	 * @return the number of matching collection items
 	 */
-	public int countByU_R(long userAccountId, int rating);
+	public int countByU_R(long userAccountId, Long rating);
 
 	/**
 	 * Caches the collection item in the entity cache if it is enabled.

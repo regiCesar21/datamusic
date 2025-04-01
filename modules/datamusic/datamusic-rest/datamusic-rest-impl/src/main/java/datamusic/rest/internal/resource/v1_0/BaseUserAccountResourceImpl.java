@@ -30,6 +30,7 @@ import datamusic.rest.resource.v1_0.UserAccountResource;
 
 import java.io.Serializable;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -404,12 +405,11 @@ public abstract class BaseUserAccountResourceImpl
 		T[] array, UnsafeFunction<T, R, Exception> unsafeFunction,
 		Class<?> clazz) {
 
-		return TransformUtil.transform(array, unsafeFunction, clazz);
+		return null;
 	}
 
 	protected <T, R> R[] transformToArray(
-		java.util.Collection<T> collection,
-		UnsafeFunction<T, R, Exception> unsafeFunction, Class<?> clazz) {
+			Collection<T> collection, UnsafeFunction<T, R, Exception> unsafeFunction, Class<? extends R> clazz) {
 
 		return TransformUtil.transformToArray(
 			collection, unsafeFunction, clazz);

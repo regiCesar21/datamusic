@@ -130,7 +130,7 @@ public class CollectionItemPersistenceTest {
 
 		newCollectionItem.setReview(RandomTestUtil.randomString());
 
-		newCollectionItem.setRating(RandomTestUtil.nextInt());
+		newCollectionItem.setRating();
 
 		_collectionItems.add(_persistence.update(newCollectionItem));
 
@@ -186,10 +186,9 @@ public class CollectionItemPersistenceTest {
 
 	@Test
 	public void testCountByU_R() throws Exception {
-		_persistence.countByU_R(
-			RandomTestUtil.nextLong(), RandomTestUtil.nextInt());
+		_persistence.countByU_R(RandomTestUtil.nextLong(), (Long)null);
 
-		_persistence.countByU_R(0L, 0);
+		_persistence.countByU_R(0L, (Long)null);
 	}
 
 	@Test
@@ -458,7 +457,7 @@ public class CollectionItemPersistenceTest {
 
 		collectionItem.setReview(RandomTestUtil.randomString());
 
-		collectionItem.setRating(RandomTestUtil.nextInt());
+		collectionItem.setRating();
 
 		_collectionItems.add(_persistence.update(collectionItem));
 
