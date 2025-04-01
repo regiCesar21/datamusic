@@ -17,7 +17,7 @@ services:
       - ./docker-compose/database/*.sql:/docker-entrypoint
 
   liferay:
-    image: "liferay/dxp:latest"
+    image: "liferay/dxp:2025.q1.0-lts"
     container_name: "datamusic"
     depends_on:
       database:
@@ -33,6 +33,9 @@ services:
       - "11311:11311"
       - "8080:8080"
       - "8000:8000"
+    user: root:root
     volumes:
-      - ./docker-compose/liferay/files/data:/mnt/liferay/data
-      - ./docker-compose/liferay/files/script":/mnt/liferay/files/script
+      - ./docker-compose/liferay/files/data:/opt/liferay/data
+      - ./docker-compose/liferay/files/script":/opt/liferay/files/script
+      - ./bundles/osgi/modules/:/opt/liferay/deploy/
+      - ./docker-compose/liferay/files/:/opt/liferay/files/
